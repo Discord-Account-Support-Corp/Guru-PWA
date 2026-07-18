@@ -16,31 +16,31 @@
 
 <body>
 
-<p>Opening Guru Workspace...</p>
+<p>Guru Workspace PWA is ready to install.</p>
 
 
 <script>
 
 if ("serviceWorker" in navigator) {
-
     navigator.serviceWorker.register("./sw.js");
-
 }
 
 
-// Wait 10 seconds before redirecting
-// Gives time to install the PWA
+const isInstalled =
+window.matchMedia("(display-mode: standalone)").matches ||
+window.navigator.standalone === true;
 
-setTimeout(() => {
+
+// Only redirect when launched as an installed app
+
+if (isInstalled) {
 
     window.location.href =
     "https://app.getguru.com/page/a4b08056-0ad1-4cd5-97c9-798bfa01f7d2";
 
-}, 10000);
-
+}
 
 </script>
-
 
 </body>
 
