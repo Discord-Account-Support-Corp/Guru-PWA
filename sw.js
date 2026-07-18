@@ -1,6 +1,6 @@
-const CACHE_NAME = "guru-workspace-pwa-v1";
+const CACHE_NAME = "guru-workspace-pwa-v2";
 
-const FILES_TO_CACHE = [
+const ASSETS = [
     "./",
     "./index.html",
     "./manifest.json",
@@ -9,35 +9,43 @@ const FILES_TO_CACHE = [
 ];
 
 
+// Install service worker
 self.addEventListener("install", event => {
+
+    self.skipWaiting();
 
     event.waitUntil(
         caches.open(CACHE_NAME)
-        .then(cache => {
-            return cache.addAll(FILES_TO_CACHE);
-        })
+        .then(cache => cache.addAll(ASSETS))
     );
 
 });
 
 
+// Activate newest version immediately
 self.addEventListener("activate", event => {
 
     event.waitUntil(
+
         caches.keys().then(keys => {
 
             return Promise.all(
+
                 keys
                 .filter(key => key !== CACHE_NAME)
                 .map(key => caches.delete(key))
+
             );
 
         })
+        .then(() => self.clients.claim())
+
     );
 
 });
 
 
+// Cache only your own PWA files
 self.addEventListener("fetch", event => {
 
     event.respondWith(
