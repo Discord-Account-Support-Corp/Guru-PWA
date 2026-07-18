@@ -16,14 +16,21 @@
 
 <body>
 
-<p>Guru Workspace PWA is ready to install.</p>
+<p>Loading Guru Workspace...</p>
 
 
 <script>
 
+
+// Register service worker without blocking startup
+
 if ("serviceWorker" in navigator) {
 
-    navigator.serviceWorker.register("./sw.js");
+    window.addEventListener("load", () => {
+
+        navigator.serviceWorker.register("./sw.js");
+
+    });
 
 }
 
@@ -37,6 +44,8 @@ const hasLaunched =
 localStorage.getItem("guru-workspace-launch");
 
 
+// Installed app launch
+
 if (isInstalled && hasLaunched) {
 
     window.location.replace(
@@ -47,6 +56,7 @@ if (isInstalled && hasLaunched) {
 
 
 // First installed launch
+
 if (isInstalled && !hasLaunched) {
 
     localStorage.setItem(
