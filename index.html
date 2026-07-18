@@ -16,53 +16,18 @@
 
 <body>
 
-<p>Loading Guru Workspace...</p>
+<h1>Guru Workspace PWA</h1>
+
+<p>
+Install this app to your Home Screen.
+</p>
 
 
 <script>
 
-
-// Register service worker without blocking startup
-
 if ("serviceWorker" in navigator) {
 
-    window.addEventListener("load", () => {
-
-        navigator.serviceWorker.register("./sw.js");
-
-    });
-
-}
-
-
-const isInstalled =
-window.matchMedia("(display-mode: standalone)").matches ||
-window.navigator.standalone === true;
-
-
-const hasLaunched =
-localStorage.getItem("guru-workspace-launch");
-
-
-// Installed app launch
-
-if (isInstalled && hasLaunched) {
-
-    window.location.replace(
-        "https://app.getguru.com/page/a4b08056-0ad1-4cd5-97c9-798bfa01f7d2"
-    );
-
-}
-
-
-// First installed launch
-
-if (isInstalled && !hasLaunched) {
-
-    localStorage.setItem(
-        "guru-workspace-launch",
-        "true"
-    );
+    navigator.serviceWorker.register("./sw.js");
 
 }
 
