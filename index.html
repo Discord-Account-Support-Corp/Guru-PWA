@@ -22,7 +22,9 @@
 <script>
 
 if ("serviceWorker" in navigator) {
+
     navigator.serviceWorker.register("./sw.js");
+
 }
 
 
@@ -31,12 +33,26 @@ window.matchMedia("(display-mode: standalone)").matches ||
 window.navigator.standalone === true;
 
 
-// Only redirect when launched as an installed app
+const hasLaunched =
+localStorage.getItem("guru-workspace-launch");
 
-if (isInstalled) {
 
-    window.location.href =
-    "https://app.getguru.com/page/a4b08056-0ad1-4cd5-97c9-798bfa01f7d2";
+if (isInstalled && hasLaunched) {
+
+    window.location.replace(
+        "https://app.getguru.com/page/a4b08056-0ad1-4cd5-97c9-798bfa01f7d2"
+    );
+
+}
+
+
+// First installed launch
+if (isInstalled && !hasLaunched) {
+
+    localStorage.setItem(
+        "guru-workspace-launch",
+        "true"
+    );
 
 }
 
