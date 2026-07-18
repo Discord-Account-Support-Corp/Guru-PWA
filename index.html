@@ -16,7 +16,7 @@
 
 <body>
 
-<p>Guru Workspace is loading...</p>
+<p>Guru Workspace PWA</p>
 
 <script>
 
@@ -27,8 +27,21 @@ if ("serviceWorker" in navigator) {
 }
 
 
-// Only redirect when already running as an installed app
+// Only redirect after the PWA has already been opened once
+const installedBefore =
+localStorage.getItem("guru-installed");
 
+
+if (installedBefore === "yes") {
+
+    window.location.replace(
+        "https://app.getguru.com/page/a4b08056-0ad1-4cd5-97c9-798bfa01f7d2"
+    );
+
+}
+
+
+// Mark as ready only when running from Home Screen
 const standalone =
 window.matchMedia("(display-mode: standalone)").matches ||
 window.navigator.standalone === true;
@@ -36,8 +49,9 @@ window.navigator.standalone === true;
 
 if (standalone) {
 
-    window.location.replace(
-    "https://app.getguru.com/page/a4b08056-0ad1-4cd5-97c9-798bfa01f7d2"
+    localStorage.setItem(
+        "guru-installed",
+        "yes"
     );
 
 }
