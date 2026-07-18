@@ -1,4 +1,4 @@
-const CACHE_NAME = "guru-pwa-v99";
+const CACHE_NAME = "guru-launcher-v1";
 
 const FILES = [
     "./",
@@ -25,19 +25,7 @@ self.addEventListener("activate", event => {
 
     event.waitUntil(
 
-        caches.keys()
-        .then(cacheNames => {
-
-            return Promise.all(
-
-                cacheNames
-                .filter(name => name !== CACHE_NAME)
-                .map(name => caches.delete(name))
-
-            );
-
-        })
-        .then(() => self.clients.claim())
+        self.clients.claim()
 
     );
 
