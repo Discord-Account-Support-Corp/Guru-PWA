@@ -1,14 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<title>GURU TEST 999</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Guru Workspace</title>
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#0066FF">
+
+<style>
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.container {
+    text-align: center;
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-<h1>GURU TEST 999</h1>
+<div class="container">
 
-<p>No JavaScript. No service worker. No redirect.</p>
+<h1>Guru Workspace</h1>
+
+<p>Loading workspace...</p>
+
+</div>
+
+
+<script>
+
+if ("serviceWorker" in navigator) {
+
+    navigator.serviceWorker.register("./sw.js");
+
+}
+
+
+const guruURL =
+"https://app.getguru.com/page/a4b08056-0ad1-4cd5-97c9-798bfa01f7d2";
+
+
+// Give iOS time to initialise the PWA
+
+setTimeout(() => {
+
+    window.location.href = guruURL;
+
+}, 3000);
+
+
+</script>
+
 
 </body>
+
 </html>
