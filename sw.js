@@ -1,23 +1,17 @@
-const CACHE_NAME = "guru-workspace-pwa-v3";
+const CACHE_NAME = "guru-pwa-v1";
 
-const APP_FILES = [
+const FILES = [
     "./",
     "./index.html",
-    "./manifest.json",
-    "./icons/icon-192.png",
-    "./icons/icon-512.png"
+    "./manifest.json"
 ];
 
 
 self.addEventListener("install", event => {
 
-    self.skipWaiting();
-
     event.waitUntil(
-
         caches.open(CACHE_NAME)
-        .then(cache => cache.addAll(APP_FILES))
-
+        .then(cache => cache.addAll(FILES))
     );
 
 });
@@ -26,9 +20,7 @@ self.addEventListener("install", event => {
 self.addEventListener("activate", event => {
 
     event.waitUntil(
-
         self.clients.claim()
-
     );
 
 });
@@ -37,14 +29,8 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
 
     event.respondWith(
-
         caches.match(event.request)
-        .then(cached => {
-
-            return cached || fetch(event.request);
-
-        })
-
+        .then(response => response || fetch(event.request))
     );
 
 });
