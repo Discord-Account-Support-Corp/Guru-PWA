@@ -1,4 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Guru Workspace</title>
+
+<link rel="manifest" href="manifest.json">
+
+<meta name="theme-color" content="#0066FF">
+
+</head>
+
+<body>
+
+<h1>Guru Workspace</h1>
+
+<p>Open your workspace below.</p>
+
+<button onclick="openGuru()">
+Open Guru Workspace
+</button>
+
+
 <script>
+
+function openGuru() {
+
+    window.location.href =
+    "https://app.getguru.com/page/a4b08056-0ad1-4cd5-97c9-798bfa01f7d2";
+
+}
+
 
 if ("serviceWorker" in navigator) {
 
@@ -6,14 +41,8 @@ if ("serviceWorker" in navigator) {
 
 }
 
-
-document.getElementById("openGuru").addEventListener("click", function () {
-
-    window.open(
-        "https://app.getguru.com/page/a4b08056-0ad1-4cd5-97c9-798bfa01f7d2",
-        "_blank"
-    );
-
-});
-
 </script>
+
+</body>
+
+</html>
