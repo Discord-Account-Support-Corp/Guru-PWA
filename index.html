@@ -12,6 +12,22 @@
 
 <meta name="theme-color" content="#0066FF">
 
+<style>
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+button {
+    font-size: 18px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+}
+</style>
+
 </head>
 
 <body>
@@ -20,19 +36,21 @@
 
 <p>Open your workspace below.</p>
 
-<button onclick="openGuru()">
+<button id="openGuru">
 Open Guru Workspace
 </button>
 
 
 <script>
 
-function openGuru() {
+document.getElementById("openGuru").addEventListener("click", function() {
 
-    window.location.href =
-    "https://app.getguru.com/page/a4b08056-0ad1-4cd5-97c9-798bfa01f7d2";
+    window.open(
+        "https://app.getguru.com/page/a4b08056-0ad1-4cd5-97c9-798bfa01f7d2",
+        "_blank"
+    );
 
-}
+});
 
 
 if ("serviceWorker" in navigator) {
