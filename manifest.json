@@ -2,8 +2,7 @@
   "name": "Guru Workspace",
   "short_name": "Guru",
   "description": "Guru Workspace PWA launcher",
-  "start_url": "./index.html",
-  "scope": "./",
+  "start_url": "https://app.getguru.com/page/a4b08056-0ad1-4cd5-97c9-798bfa01f7d2",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0066FF"
