@@ -1,10 +1,9 @@
-const CACHE_NAME = "guru-pwa-v2";
+const CACHE_NAME = "guru-pwa-v3";
 
 const FILES = [
     "./",
     "./index.html",
-    "./manifest.json",
-    "./icon-180.png"
+    "./manifest.json"
 ];
 
 
@@ -23,21 +22,7 @@ self.addEventListener("install", event => {
 self.addEventListener("activate", event => {
 
     event.waitUntil(
-
-        caches.keys()
-        .then(cacheNames => {
-
-            return Promise.all(
-
-                cacheNames
-                .filter(name => name !== CACHE_NAME)
-                .map(name => caches.delete(name))
-
-            );
-
-        })
-        .then(() => self.clients.claim())
-
+        self.clients.claim()
     );
 
 });
@@ -46,10 +31,8 @@ self.addEventListener("activate", event => {
 self.addEventListener("fetch", event => {
 
     event.respondWith(
-
         caches.match(event.request)
         .then(response => response || fetch(event.request))
-
     );
 
 });
