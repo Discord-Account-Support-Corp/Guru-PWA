@@ -4,6 +4,7 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Guru Workspace</title>
@@ -12,47 +13,36 @@
 
 <meta name="theme-color" content="#0066FF">
 
-<style>
+<meta name="apple-mobile-web-app-capable" content="yes">
 
-body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #ffffff;
-}
+<meta name="apple-mobile-web-app-title" content="Guru Workspace">
 
-button {
-    font-size: 20px;
-    padding: 16px 32px;
-    border: none;
-    border-radius: 12px;
-    background: #0066FF;
-    color: white;
-    cursor: pointer;
-}
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-button:active {
-    opacity: 0.8;
-}
-
-</style>
+<link rel="apple-touch-icon" href="icon-180.png">
 
 </head>
 
+
 <body>
 
+<h1>Guru Workspace</h1>
+
+<p>Your Guru PWA is ready.</p>
+
 <button id="openGuru">
-    Open Guru Workspace
+Open Guru Workspace
 </button>
+
 
 <script>
 
 if ("serviceWorker" in navigator) {
+
     navigator.serviceWorker.register("./sw.js");
+
 }
+
 
 document.getElementById("openGuru").addEventListener("click", function () {
 
@@ -62,6 +52,7 @@ document.getElementById("openGuru").addEventListener("click", function () {
 });
 
 </script>
+
 
 </body>
 
