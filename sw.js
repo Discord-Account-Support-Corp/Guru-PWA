@@ -1,4 +1,4 @@
-const CACHE_NAME = "guru-pwa-v4";
+const CACHE_NAME = "guru-pwa-v5";
 
 const FILES_TO_CACHE = [
     "./",
@@ -46,12 +46,8 @@ self.addEventListener("fetch", event => {
 
     event.respondWith(
 
-        caches.match(event.request)
-        .then(cachedResponse => {
-
-            return cachedResponse || fetch(event.request);
-
-        })
+        fetch(event.request)
+        .catch(() => caches.match(event.request))
 
     );
 
